@@ -1,5 +1,5 @@
 import React from 'react';
-import { firebase, database } from '../firebase/firebase';
+import { firestore } from '../firebase/firebase';
 
 class NameForm extends React.Component {
   constructor() {
@@ -29,15 +29,22 @@ class NameForm extends React.Component {
     const waitTimeMins = this.convertWaitTimeToMinutes(this.state.waittime);
     console.log(waitTimeMins);
     e.preventDefault();
-    const itemsRef = firebase.database().ref('waittimes');
-    const item = {
+    const fstore = firestore;
+    fstore.settings({
+      timestampsInSnapshots: true
+    });
+    fstore.collection('waittimes').add({
       name: this.state.name,
       minutes: waitTimeMins
-    };
-    itemsRef.push(item);
+    });
     this.setState({
       name: '',
       waittime: ''
+    });
+    fstore.collection('waittimes').get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        console.log(`${doc.id} => ${doc.data()}`);
+      });
     });
   }
 
