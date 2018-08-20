@@ -1,8 +1,11 @@
 import React from 'react';
+import Form from './Form';
+import NameForm from './NameForm';
 
 const DashboardPage = () => (
   <div>
-    Dashboard Content
+    {/* <Form /> */}
+    <NameForm />
   </div>
 );
 
