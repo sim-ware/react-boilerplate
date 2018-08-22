@@ -14,7 +14,6 @@ firebase.initializeApp(config);
 
 const database = firebase.database();
 
-// Initialize Cloud Firestore through Firebase
 const firestore = firebase.firestore();
 
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();

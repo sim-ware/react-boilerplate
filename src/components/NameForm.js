@@ -1,5 +1,5 @@
 import React from 'react';
-import { firestore } from '../firebase/firebase';
+import firestore from '../firebase/firebase';
 
 class NameForm extends React.Component {
   constructor() {
@@ -26,7 +26,7 @@ class NameForm extends React.Component {
   addWaitTime(e) {
     console.log('addWaitTime');
     console.log(this.state.name);
-    const waitTimeMins = this.convertWaitTimeToMinutes(this.state.waittime);
+    const waitTimeMins = this.convertWaitTimeToMinutes(this.state.waittime).toString();
     console.log(waitTimeMins);
     e.preventDefault();
     const fstore = firestore;

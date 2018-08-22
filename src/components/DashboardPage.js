@@ -1,11 +1,11 @@
 import React from 'react';
-import Form from './Form';
 import NameForm from './NameForm';
+import WaitList from './WaitList';
 
 const DashboardPage = () => (
   <div>
-    {/* <Form /> */}
     <NameForm />
+    <WaitList />
   </div>
 );
 
