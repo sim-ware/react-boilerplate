@@ -41,11 +41,6 @@ class NameForm extends React.Component {
       name: '',
       waittime: ''
     });
-    fstore.collection('waittimes').get().then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        console.log(`${doc.id} => ${doc.data()}`);
-      });
-    });
   }
 
 

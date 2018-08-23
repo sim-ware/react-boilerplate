@@ -29,20 +29,12 @@ class WaitList extends React.Component {
     });
   }
 
-// TODO:// TODO:// TODO:
-// TODO: https://medium.com/byte-sized-react/component-arrays-in-react-a46e775fae7b
-// TODO: FOLLOWING THIS EXAMPLE, CREATE A WAITLIST COMPONENT THAT DOES THE SAME THING
-// TODO: AS THE QUOTE COMPONENT FROM THE EXAMPLE. RENDER THEM CONTAINING THE NAMES
-// TODO: AND WAITTIMES AS PROPS
-// TODO:// TODO:// TODO:
-
   render() {
 
     let dataUI = this.state.data;
     let timedataUI = this.state.timedata;
     var result = {};
     dataUI.forEach((dataUIpoint, i) => result[dataUIpoint] = timedataUI[i]);
-    // console.log(result);
     var sortable = [];
     for (var entry in result) {
         sortable.push([entry, result[entry]]);
@@ -51,24 +43,10 @@ class WaitList extends React.Component {
     sortable.sort(function(a, b) {
         return a[1] - b[1];
     });
-    // console.log(sortable)
-    // console.log(typeof result)
-    // console.log(result)
-    // var output = Object.entries(result).map(([key, value]) => ({key,value}));
-    // console.log(output);
-    // console.log(typeof output)
-    const quoteArray = sortable.map((entry) => {
-      return (
-        <WaitListItem name={entry.name} minutes={entry.minutes} />
-      );
-    // console.log(quoteArray);
-    });
 
     return (
       <div>
-      {console.log(quoteArray)}
-        {quoteArray}
-        <WaitListItem name={'simon'} minutes={'21'} />
+        {sortable.map(entry => <WaitListItem name={entry[0]} minutes={entry[1]} />)}
       </div>
     );
   }

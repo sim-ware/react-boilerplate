@@ -1,29 +1,7 @@
 import React from 'react';
+// import Line from 'rc-progress';
+import ProgressionBar from './ProgressionBar';
 
-
-// const Quote = props => {
-//   return (
-//     <div>
-//       <h4>{props.text}</h4>
-//       <p>{props.author}</p>
-//     </div>
-//   );
-// };
-// Quote.propTypes = {
-//   text: React.PropTypes.string,
-//   author: React.PropTypes.string
-// }
-
-// class WaitListItem extends React.Component {
-//   render() {
-//
-//     return (
-//       <div>
-//         {sortable}
-//       </div>
-//     );
-//   }
-// }
 
 class WaitListItem extends React.Component {
   constructor(props) {
@@ -31,10 +9,13 @@ class WaitListItem extends React.Component {
   }
 
   render() {
+    let minutes = this.props
     return (
-      <div>
-        <h4>{this.props.name}</h4>
-        <p>{this.props.minutes}</p>
+      <div className="list-waitlistitem">
+        <span className="list-namelabel">{this.props.name}</span>
+        <span className="list-timelabel">{this.props.minutes}</span>
+        { minutes ? <ProgressionBar {...this.props.minutes} /> : null}
+        { console.log(this.props.minutes)}; }
       </div>
     );
   }
