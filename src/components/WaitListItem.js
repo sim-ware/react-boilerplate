@@ -15,7 +15,6 @@ class WaitListItem extends React.Component {
         <span className="list-namelabel">{this.props.name}</span>
         <span className="list-timelabel">{this.props.minutes}</span>
         { minutes ? <ProgressionBar {...this.props.minutes} /> : null}
-        { console.log(this.props.minutes)}; }
       </div>
     );
   }
