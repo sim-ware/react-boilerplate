@@ -1,24 +1,27 @@
 import React from 'react';
 import { ProgressBar } from 'react-progress-ui';
-import moment from 'moment';
 
+
+const startTime = new Date()
+var waitingTime = '';
+var ans = '';
 
 class ProgressionBar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { starttime: 0, elapsed: 0 };
-    };
-  //   this.componentDidMount = this.componentDidMount.bind(this);
-  // }
-
-  tick() {
-    this.setState(prevState => ({
-      elapsed: prevState.elapsed + 1
-    }));
+    this.state = { waitingTime: '' };
   }
 
-  componentDidMount() {
-    this.interval = setInterval(() => this.tick(), 60000);
+  componentWillMount(){
+    setInterval(function(){
+        var resultArray = [];
+        for (var key in this.props) resultArray = resultArray.concat(this.props[key]);
+        waitingTime = resultArray.join().replace(/,/g, '');
+        var timeNow = new Date();
+        var numerator = timeNow - startTime;
+        waitingTime = waitingTime * 60000;
+        var ans = numerator / waitingTime;
+    }.bind(this), 1000);
   }
 
   componentWillUnmount() {
@@ -26,17 +29,9 @@ class ProgressionBar extends React.Component {
   }
 
   render() {
-    var resultArray = [];
-    for (var key in this.props) resultArray = resultArray.concat(this.props[key]);
-    var minutes = resultArray.join().replace(/,/g, '');
-    var timeNow = moment();
-    var timeAfterWait = moment(timeNow).add(minutes, 'minutes');
-    console.log(timeNow);
-    console.log(minutes);
-    console.log(timeAfterWait);
     return (
       <div>
-        <ProgressBar percentageDone={minutes} />
+        <ProgressBar percentageDone={ans} />
       </div>
     );
   }

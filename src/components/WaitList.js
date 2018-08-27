@@ -27,6 +27,10 @@ class WaitList extends React.Component {
       const newdata = collection.docs.map(doc => doc.data().minutes)
       this.setState({ timedata: newdata });
     });
+    fstore.collection('waittimes').get().then(collection => {
+      const newdata = collection.docs.map(doc => doc.data().minutes)
+      this.setState({ timedata: newdata });
+    });
   }
 
   render() {

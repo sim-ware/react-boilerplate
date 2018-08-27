@@ -24,10 +24,7 @@ class NameForm extends React.Component {
   }
 
   addWaitTime(e) {
-    console.log('addWaitTime');
-    console.log(this.state.name);
     const waitTimeMins = this.convertWaitTimeToMinutes(this.state.waittime).toString();
-    console.log(waitTimeMins);
     e.preventDefault();
     const fstore = firestore;
     fstore.settings({
